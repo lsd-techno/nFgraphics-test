@@ -1,5 +1,5 @@
 # nFgraphics-test
-Simple application to test nF graphics
+Simple application to test nF graphics on ESP32 boards (tested with PSRAM chip modules only)
 
 This app intended to make fast and simple test of nF display driver.
 Output should be something like that:
