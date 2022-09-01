@@ -24,13 +24,13 @@ namespace nFgraphics_test
 
             const bool wrover = true;
 
-            // Display parameters
+            // TODO: Set correct phisical display size
             const int screenWidth = 240;
             const int screenHeight = 320;
             const int screenBufferSize = 240 * 320 * 2; //16bpp
 
 
-            // TODO:// Update Your display pinout!
+            // TODO: Update Your display pinout!
             if (wrover)
             {
                 backLightPin = 5;
@@ -49,7 +49,8 @@ namespace nFgraphics_test
             Configuration.SetPinFunction(23, DeviceFunction.SPI1_MOSI);
             Configuration.SetPinFunction(18, DeviceFunction.SPI1_CLOCK);
 
-            Configuration.SetPinFunction(backLightPin, DeviceFunction.PWM1);
+            // optional PWM control for backlight
+            //Configuration.SetPinFunction(backLightPin, DeviceFunction.PWM1);
 
 
             DisplayControl.Initialize(new SpiConfiguration(1, chipSelect, dataCommand, reset, -1), new ScreenConfiguration(0, 0, screenWidth, screenHeight), screenBufferSize);
@@ -62,7 +63,7 @@ namespace nFgraphics_test
                 Debug.WriteLine("Orientation set LANDSCAPE180");
             }
 
-            // TODO: make sure that Your bp (backlight pin) configuret properly.
+            // TODO: make sure that Your bp (backlight pin) configured properly.
             var bp = new GpioController().OpenPin(backLightPin, PinMode.Output);
             bp.Write(PinValue.High);
 
